@@ -4,14 +4,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comida Rusa</title>
+    
+    <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
-    <h1>Comida Rusa</h1>
-    <p>La comida rusa es conocida por su diversidad y riqueza en sabores, influenciada por las vastas regiones del país y sus tradiciones culturales. Algunos platos típicos incluyen:</p>
-    <ul>
-        <li><strong>Borscht:</strong> Una sopa de remolacha que puede servirse caliente o fría, a menudo acompañada de crema agria.</li>
-        <li><strong>Pirozhki:</strong> Pequeños pasteles rellenos de carne, verduras o frutas.</li>
-    </ul>
-    <p>La comida rusa también incluye una variedad de panes, encurtidos y bebidas tradicionales como el vodka y el kvas. La gastronomía rusa refleja la historia y la cultura del país, ofreciendo una experiencia culinaria única.</p>
+
+<h1>Comida Rusa</h1>
+
+<div id="lista" class="grid">
+
+    <div class="card" onclick="abrirReceta('stroganoff')">
+        <div class="card-content">
+            <div class="card-title">Stroganoff de soja con crema de setas</div>
+            <p>45 minutos • 2 porciones</p>
+        </div>
+    </div>
+
+    <div class="card" onclick="abrirReceta('kartoshka')">
+        <div class="card-content">
+            <div class="card-title">Pastelitos rusos Kartoshka</div>
+            <p>40 minutos • 7–8 pastelitos</p>
+        </div>
+    </div>
+
+</div>
+
+<div id="detalle"></div>
+
+
+<script>
+function abrirReceta(id) {
+    document.getElementById("lista").style.display = "none";
+    const detalle = document.getElementById("detalle");
+    detalle.style.display = "block";
+
+    if (id === "stroganoff") {
+        detalle.innerHTML = `
+            <button id="btnVolver" onclick="volver()">Volver</button>
+            <h2>Stroganoff de soja con crema de setas</h2>
+            <img src="https://i.imgur.com/4Zz7UkY.jpeg">
+
+            <h3>Ingredientes</h3>
+            <ul>
+                <li>100g soja texturizada</li>
+                <li>200g setas</li>
+                <li>1 cebolla</li>
+                <li>1 ajo</li>
+            </ul>
+
+            <h3>Pasos</h3>
+            <ol>
+                <li>Hidrata la soja.</li>
+                <li>Saltea cebolla y ajo.</li>
+                <li>Añade setas.</li>
+                <li>Agrega la soja y cocina 3 min.</li>
+            </ol>
+        `;
+    }
+
+    if (id === "kartoshka") {
+        detalle.innerHTML = `
+            <button id="btnVolver" onclick="volver()">Volver</button>
+            <h2>Pastelitos rusos Kartoshka</h2>
+            <img src="https://i.imgur.com/3n6XyBC.jpeg">
+
+            <h3>Ingredientes</h3>
+            <ul>
+                <li>Harina</li>
+                <li>Yemas</li>
+                <li>Azúcar</li>
+                <li>Bicarbonato</li>
+            </ul>
+
+            <h3>Pasos</h3>
+            <ol>
+                <li>Mezcla ingredientes.</li>
+                <li>Forma pastelitos.</li>
+                <li>Hornea 12 min.</li>
+            </ol>
+        `;
+    }
+}
+
+function volver() {
+    document.getElementById("detalle").style.display = "none";
+    document.getElementById("lista").style.display = "grid";
+}
+</script>
+
 </body>
 </html>
