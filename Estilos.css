@@ -1,0 +1,340 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    background: #f8f8f8; /* Fondo gris claro */
+    color: #333;
+}
+
+/* --- PESTAÑAS DE NAVEGACIÓN --- */
+.tabs {
+    background: white;
+    border-bottom: 1px solid #eee;
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tabs a {
+    display: inline-block;
+    padding: 15px 5px;
+    margin-right: 20px;
+    text-decoration: none;
+    color: #888;
+    font-weight: bold;
+    font-size: 14px;
+    border-bottom: 3px solid transparent;
+}
+
+.tabs a.active {
+    color: #333;
+    border-bottom: 3px solid #ff7b00; /* Acento naranja */
+}
+
+/* --- LAYOUT PRINCIPAL (GRID) --- */
+.main-layout {
+    display: grid;
+    /* Define 2 columnas: 2.5 partes para el contenido, 1 para la sidebar */
+    grid-template-columns: 2.5fr 1fr;
+    gap: 30px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+h1 {
+    text-align: left;
+    padding: 0;
+    margin: 0 0 20px 0;
+    font-size: 28px;
+}
+
+h1 .count {
+    font-weight: normal;
+    color: #888;
+    font-size: 24px;
+    margin-left: 8px;
+}
+
+/* --- LISTA DE RECETAS (IZQUIERDA) --- */
+#lista {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+    max-width: 100%;
+    margin: 0;
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* --- TARJETA DE RECETA (HORIZONTAL) --- */
+.card {
+    display: flex; /* La clave: alinea imagen y contenido horizontalmente */
+    align-items: flex-start;
+    background: white;
+    border-radius: 0;
+    overflow: hidden;
+    box-shadow: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    padding: 20px;
+    border-bottom: 1px solid #eee; /* Separador */
+}
+
+.card:last-child {
+    border-bottom: none;
+}
+
+.card:hover {
+    background-color: #fafafa;
+    transform: none; /* Quitamos el efecto de escala */
+}
+
+/* Imagen de la tarjeta */
+.card img {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 20px;
+    flex-shrink: 0; /* Evita que la imagen se encoja */
+}
+
+/* Contenido de la tarjeta */
+.card-content {
+    flex: 1; /* Ocupa el espacio restante */
+    padding: 0;
+}
+
+.card-title {
+    font-size: 20px;
+    margin: 0 0 8px 0;
+    font-weight: bold;
+    color: #333;
+}
+
+.card-content p {
+    font-size: 14px;
+    color: #777;
+    margin: 0 0 15px 0;
+    /* Truncar texto */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-meta {
+    font-size: 13px;
+    color: #777;
+    display: flex;
+    gap: 15px;
+}
+
+.card-meta span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.card-meta .fa-solid,
+.card-meta .fa-regular {
+    color: #aaa;
+}
+
+/* Botón de guardar */
+.bookmark-btn {
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: #aaa;
+    cursor: pointer;
+    padding: 5px 0 5px 15px;
+}
+
+.bookmark-btn:hover {
+    color: #ff7b00;
+}
+
+/* --- BARRA LATERAL (DERECHA) --- */
+.sidebar {
+    padding-top: 10px;
+}
+
+.sidebar-widget {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.sidebar-widget h3 {
+    font-size: 16px;
+    margin: 0 0 15px 0;
+}
+
+/* Búsquedas relacionadas */
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag {
+    background: #f0f0f0;
+    color: #555;
+    padding: 8px 12px;
+    border-radius: 16px;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.tag:hover {
+    background: #e0e0e0;
+}
+
+/* Filtros */
+.filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.filter-header h3 {
+    margin: 0;
+}
+
+.reset-link {
+    font-size: 13px;
+    color: #ff7b00;
+    text-decoration: none;
+}
+
+.search-box {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.search-box .fa-magnifying-glass {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+    font-size: 14px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 12px 12px 12px 35px; /* Espacio para el icono */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+    background: #f8f8f8;
+}
+
+.search-box input::placeholder {
+    color: #999;
+}
+
+.premium-btn {
+    background: #ffd100; /* Naranja-amarillo de la imagen */
+    color: #333;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    width: 100%;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+/* --- VISTA DE DETALLE --- */
+#detalle {
+    display: none;
+    padding: 30px;
+    max-width: 900px;
+    margin: 20px auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+#detalle img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+#btnVolver {
+    background: #ff7b00;
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 900px) {
+    .main-layout {
+        grid-template-columns: 1fr; /* Apila contenido y sidebar */
+    }
+    
+    .sidebar {
+        order: -1; /* Mueve la sidebar arriba en móvil */
+    }
+}
+
+@media (max-width: 600px) {
+    .main-layout {
+        padding: 10px;
+    }
+    .tabs {
+        padding: 0 10px;
+    }
+    
+    /* Tarjeta vertical en móvil */
+    .card {
+        flex-direction: column;
+        padding: 15px;
+    }
+    
+    .card img {
+        width: 100%;
+        height: 200px;
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    .bookmark-btn {
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        background: rgba(255,255,255,0.8);
+        border-radius: 50%;
+        padding: 8px 10px;
+    }
+    #lista {
+        border: none;
+        background: none;
+        border-radius: 0;
+    }
+    .card {
+        border-radius: 8px;
+        border: 1px solid #eee;
+        margin-bottom: 15px;
+        position: relative;
+    }
+}

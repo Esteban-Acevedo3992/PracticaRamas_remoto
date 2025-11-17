@@ -5,47 +5,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comida Rusa</title>
     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
 
-<h1>Comida Rusa</h1>
+<div id="list-container">
 
-<div id="lista" class="grid">
+    <nav class="tabs">
+        <a href="#" class="active">Últimas</a>
+        <a href="#">Más populares</a>
+    </nav>
 
-    <div class="card" onclick="abrirReceta('stroganoff')">
-        <img src="https://i.imgur.com/4Zz7UkY.jpeg">
-        <div class="card-content">
-            <div class="card-title">Stroganoff de soja con crema de setas</div>
-            <p>45 minutos • 2 porciones</p>
-        </div>
-    </div>
+    <div class="main-layout">
+        
+        <div class="main-content">
+            <h1>Comida Rusa <span class="count">(2.027)</span></h1>
 
-    <div class="card" onclick="abrirReceta('kartoshka')">
-        <img src="https://i.imgur.com/3n6XyBC.jpeg">
-        <div class="card-content">
-            <div class="card-title">Pastelitos rusos Kartoshka</div>
-            <p>40 minutos • 7–8 pastelitos</p>
-        </div>
-    </div>
+            <div id="lista">
+                <div class="card" onclick="abrirReceta('stroganoff')">
+                    <img src="https://i.imgur.com/4Zz7UkY.jpeg" alt="Stroganoff de soja">
+                    <div class="card-content">
+                        <div class="card-title">Stroganoff de soja con crema de setas</div>
+                        <p>Sota texturizada · champiñones o mixtas · Cebolla · Ajo · Caldo de verduras...</p>
+                        <div class="card-meta">
+                            <span><i class="fa-regular fa-clock"></i> 45 minutos</span>
+                            <span><i class="fa-solid fa-user-group"></i> 2 porciones</span>
+                        </div>
+                    </div>
+                    <button class="bookmark-btn"><i class="fa-regular fa-bookmark"></i></button>
+                </div>
 
-</div>
+                <div class="card" onclick="abrirReceta('kartoshka')">
+                    <img src="https://i.imgur.com/3n6XyBC.jpeg" alt="Pastelitos Kartoshka">
+                    <div class="card-content">
+                        <div class="card-title">Pastelitos rusos Kartoshka</div>
+                        <p>harina tamizada · yemas de huevo · claras de huevo · azúcar · azúcar vainillado...</p>
+                        <div class="card-meta">
+                            <span><i class="fa-regular fa-clock"></i> 40 minutos</span>
+                            <span><i class="fa-solid fa-user-group"></i> 7–8 pastelitos</span>
+                        </div>
+                    </div>
+                    <button class="bookmark-btn"><i class="fa-regular fa-bookmark"></i></button>
+                </div>
 
-<div id="detalle"></div>
+            </div> </div> <aside class="sidebar">
+            <div class="sidebar-widget">
+                <h3>Búsquedas relacionadas</h3>
+                <div class="tags">
+                    <a href="#" class="tag">comida rusa fácil</a>
+                    <a href="#" class="tag">comida rusa de remolacha</a>
+                    <a href="#" class="tag">comida rusa de españa</a>
+                    <a href="#" class="tag">comida rusa dulce</a>
+                </div>
+            </div>
+
+            <div class="sidebar-widget">
+                <div class="filter-header">
+                    <h3>Filtros</h3>
+                    <a href="#" class="reset-link">Resetear</a>
+                </div>
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Buscar por ingrediente...">
+                </div>
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Mostrarme recetas sin...">
+                </div>
+                <button class="premium-btn">
+                    <i class="fa-solid fa-lock"></i>
+                    Filtros Premium
+                </button>
+            </div>
+        </aside> </div> </div> <div id="detalle"></div>
 
 
 <script>
 function abrirReceta(id) {
-    document.getElementById("lista").style.display = "none";
+    // Modificado: Oculta el contenedor principal
+    document.getElementById("list-container").style.display = "none";
+    
     const detalle = document.getElementById("detalle");
     detalle.style.display = "block";
 
+    // Tu código original de JS
     if (id === "stroganoff") {
         detalle.innerHTML = `
             <button id="btnVolver" onclick="volver()">Volver</button>
             <h2>Stroganoff de soja con crema de setas</h2>
             <img src="https://i.imgur.com/4Zz7UkY.jpeg">
-
             <h3>Ingredientes</h3>
             <ul>
                 <li>100g soja texturizada</li>
@@ -53,7 +103,6 @@ function abrirReceta(id) {
                 <li>1 cebolla</li>
                 <li>1 ajo</li>
             </ul>
-
             <h3>Pasos</h3>
             <ol>
                 <li>Hidrata la soja.</li>
@@ -69,7 +118,6 @@ function abrirReceta(id) {
             <button id="btnVolver" onclick="volver()">Volver</button>
             <h2>Pastelitos rusos Kartoshka</h2>
             <img src="https://i.imgur.com/3n6XyBC.jpeg">
-
             <h3>Ingredientes</h3>
             <ul>
                 <li>Harina</li>
@@ -77,7 +125,6 @@ function abrirReceta(id) {
                 <li>Azúcar</li>
                 <li>Bicarbonato</li>
             </ul>
-
             <h3>Pasos</h3>
             <ol>
                 <li>Mezcla ingredientes.</li>
@@ -90,7 +137,8 @@ function abrirReceta(id) {
 
 function volver() {
     document.getElementById("detalle").style.display = "none";
-    document.getElementById("lista").style.display = "grid";
+    // Modificado: Muestra el contenedor principal
+    document.getElementById("list-container").style.display = "block";
 }
 </script>
 
